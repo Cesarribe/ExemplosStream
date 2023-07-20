@@ -8,13 +8,24 @@ public class ExemplosOPtional {
     public static void main(String[] args) {
         List<Pessoa> lista = new Pessoa().populaPessoas();
 
-        Optional<Pessoa> opcional = lista.stream()
+        Optional<Pessoa> max = lista.stream()
                 .max(Comparator.comparing(Pessoa::getIdade));
 
-        if (opcional.isPresent()) {
-            System.out.println(opcional.get());
+        // opcão 2
+        if (max.isPresent()) {
+            System.out.println(max.get());
         }
 
-        opcional.ifPresent(System.out::println);
+        max.ifPresent(System.out::println);
+
+        Optional<Pessoa> min = lista.stream()
+                .min(Comparator.comparing(Pessoa::getIdade));
+
+        // opcão 2
+        if (min.isPresent()) {
+            System.out.println(min.get());
+        }
+
+        min.ifPresent(System.out::println);
     }
 }
